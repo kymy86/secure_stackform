@@ -32,7 +32,7 @@ You need to set-up the following variables:
 - *s3_frontend_bucket_name* S3 bucket name where the frontend files are placed
 - *s3_assets_bucket_name* S3 bucket name where back-end stores the asset files
 
-## Referenced architecture
+## Reference architecture
 
 ![](./reference_arch.png)
 
