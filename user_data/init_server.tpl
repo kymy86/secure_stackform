@@ -30,7 +30,7 @@ sudo service nginx stop
 # Download front-end files on server if exist
 cd /var/www/frontend
 aws s3 sync s3://${s3_frontend_bucket_name} . --delete
-sudo echo "0 * * * * root aws s3 sync s3://${s3_frontend_bucket_name} /var/www/frontend --delete" >> /etc/crontab
+sudo echo "*/10 * * * * root aws s3 sync s3://${s3_frontend_bucket_name} /var/www/frontend --delete" >> /etc/crontab
 
 #set-up certbot renewing process
 cat <<EOF >/etc/cron.daily/renew-certs
@@ -63,14 +63,14 @@ server {
             return 301 https://$$server_name$$request_uri;
         }
 
-    if (-f \$$request_filename) {
+    if (-f $$request_filename) {
       break;
     }
-    if (-f \$$request_filename/index.html) {
-      rewrite (.*) \$$1/index.html break;
+    if (-f $$request_filename/index.html) {
+      rewrite (.*) $$1/index.html break;
     }
-    if (-f \$$request_filename.html) {
-      rewrite (.*) \$$1.html break;
+    if (-f $$request_filename.html) {
+      rewrite (.*) $$1.html break;
     }
   }
 }
@@ -93,16 +93,16 @@ server {
     if ($$scheme = http) {
             return 301 https://$$server_name$$request_uri;
         }
-    if (-f \$$request_filename) {
+    if (-f $$request_filename) {
       break;
     }
-    if (-f \$$request_filename/index.html) {
-      rewrite (.*) \$$1/index.html break;
+    if (-f $$request_filename/index.html) {
+      rewrite (.*) $$1/index.html break;
     }
-    if (-f \$$request_filename.html) {
-      rewrite (.*) \$$1.html break;
+    if (-f $$request_filename.html) {
+      rewrite (.*) $$1.html break;
     }
-    if (!-f \$$request_filename) {
+    if (!-f $$request_filename) {
       rewrite (.*) /index.html break;
     }
   }
