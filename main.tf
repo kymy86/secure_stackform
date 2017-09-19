@@ -51,9 +51,9 @@ resource "aws_instance" "sstack_instance" {
 
     ebs_block_device = {
         device_name = "/dev/sdb"
-        volume_type = "io1"
+        volume_type = "gp2"
         volume_size = "20"
-        iops = "500"
+        iops = "100"
     }
 
     user_data = "${data.template_file.init_server.rendered}"
