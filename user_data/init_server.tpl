@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get upgrade -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
 sudo apt-get install nginx -y
 sudo apt-get install software-properties-common -y
@@ -10,6 +10,7 @@ sudo apt-get update
 sudo apt-get install python-certbot-nginx -y
 sudo apt-get install python-pip -y
 sudo pip install --upgrade pip
+sudo pip install future
 sudo pip install certbot-external-auth
 sudo pip install awscli --upgrade
 # create app folders
