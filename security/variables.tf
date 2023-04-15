@@ -1,7 +1,7 @@
 variable "vpc_id" {
-    type = "string"
+  type = string
 }
 
 variable "my_ip_address" {
-    type = "string"
+  type = string
 }

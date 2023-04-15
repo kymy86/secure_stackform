@@ -1,4 +1,4 @@
-# Secure Stack Terraform ![version][version-badge]
+# Secure Stack Terraform ![version][version-badge]
 
 [version-badge]: https://img.shields.io/badge/version-0.0.1-blue.svg
 

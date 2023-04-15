@@ -112,3 +112,12 @@ EOF
 
 sudo mv /tmp/default.conf /etc/nginx/sites-enabled/default.conf
 sudo mv /tmp/frontend.conf /etc/nginx/sites-enabled/frontend.conf
+
+#setup
+
+sudo service nginx stop
+sudo certbot certonly --standalone --non-interactive --agree-tos --email ${certificate_email} --domains ${fe_subdomain}
+
+sudo certbot certonly --standalone --non-interactive --agree-tos --email ${certificate_email} --domains ${be_subdomain}
+
+sudo service nginx start
